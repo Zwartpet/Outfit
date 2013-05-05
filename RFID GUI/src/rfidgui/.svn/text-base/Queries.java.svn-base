@@ -1,0 +1,143 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package rfidgui;
+import java.sql.*; //import alle uit java.sql
+import java.util.logging.Level;
+import java.util.logging.Logger;
+/**
+ *
+ * @author Zwarthoed
+ */
+public class Queries {
+            ConnectDB dbconnect = new ConnectDB(); //object om naar de database te connecten
+            boolean login = false;
+    public String[][] SelectFromLogged(){
+        String[][] users = null;
+         try {
+            Statement stmt = dbconnect.conn.createStatement(); //statement 1 voor resultset LOGGED_users
+            Statement stmt2 = dbconnect.conn.createStatement(); //statement 2 voor resultset RFID_users
+            ResultSet rsLog; //definiëren van resultset voor LOGGED_users
+            ResultSet rsLogRfid; //definiëren van resultset voor RFID_users
+            
+            rsLog = stmt.executeQuery("SELECT * FROM LOGGED_users"); //initializeren van resultset voor LOGGED_users
+            rsLog.last();
+            int totalRows = rsLog.getRow();
+            rsLog.beforeFirst();
+            users = new String[totalRows][4];
+            int x = 0;
+            while ( rsLog.next() ) { //als er een volgend resultaat is doe het onderstaande met dit resultaat
+                int rfidID = rsLog.getInt("loged_rfid_id"); //haal loged_rfid_id op uit het resultaat
+                
+                rsLogRfid = stmt2.executeQuery("SELECT * FROM RFID_users WHERE rfid_id = "+rfidID); //initializeren van resultset voor RFID_users waar rfid_id = rfidID
+                users[x][0] = "" + rsLog.getInt("loged_id"); //haal loged_id op uit het resultaat
+                users[x][1] = rsLogRfid.getString("rfid_username"); //haal rfid_username op uit het resultaat
+                users[x][2] = rsLog.getString("loged_time"); //haal loged_time op uit het resultaat
+                users[x][3] = rsLog.getString("loged_inout"); //haal loged_inout op uit het resultaat
+                x++;
+            }
+            
+        } catch (Exception e) { //vang foutmeldingen
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
+         return users;
+    }
+    
+    public String[][] SelectFromRfid(){
+        String[][] users = null;
+         try {
+            Statement stmt = dbconnect.conn.createStatement(); //statement voor resultset RFID_users
+            ResultSet rsRfid; //definiëren van resultset voor RFID_users
+            rsRfid = stmt.executeQuery("SELECT * FROM RFID_users"); //initializeren van resultset voor RFID_users
+            rsRfid.last();
+            int totalRows = rsRfid.getRow();
+            rsRfid.beforeFirst();
+            users = new String[totalRows][4];
+            int x = 0;
+            while ( rsRfid.next() ) { //als er een volgend resultaat is doe het onderstaande met dit resultaat
+                users[x][0] = "" + rsRfid.getInt("rfid_id"); //haal rfid_id op uit het resultaat
+                users[x][1] = rsRfid.getString("rfid_username"); //haal rfid_username op uit het resultaat
+                users[x][2] = rsRfid.getString("rfid_lastname"); //haal rfid_lastname op uit het resultaat
+                users[x][3] = rsRfid.getString("rfid_code"); // haal rfid_code op uit het resultaat
+                x++;
+                
+            }
+            
+        } catch (Exception e) { //vang foutmeldingen
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
+         return users;
+    }
+    
+    public String[][] SelectUser(int user){
+        String[][] users = null;
+         try {
+            Statement stmt = dbconnect.conn.createStatement(); //statement voor resultset RFID_users
+            ResultSet rsRfid; //definiëren van resultset voor RFID_users
+            
+            rsRfid = stmt.executeQuery("SELECT * FROM RFID_users WHERE rfid_id = " + user); //initializeren van resultset voor RFID_users
+            users = new String[1][4];
+            while ( rsRfid.next() ) { //als er een volgend resultaat is doe het onderstaande met dit resultaat                
+                users[0][0] = "" + rsRfid.getInt("rfid_id"); //haal rfid_id op uit het resultaat
+                users[0][1] = rsRfid.getString("rfid_username"); //haal rfid_username op uit het resultaat
+                users[0][2] = rsRfid.getString("rfid_lastname"); //haal rfid_lastname op uit het resultaat
+                users[0][3] = rsRfid.getString("rfid_code"); // haal rfid_code op uit het resultaat
+            }
+            
+        } catch (Exception e) { //vang foutmeldingen
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
+         return users;
+    }
+    
+    public void GuiLogin(String user, String password){
+         try {
+            Statement stmt = dbconnect.conn.createStatement(); //statement voor resultset RFID_users
+            ResultSet rsGui; //definiëren van resultset voor RFID_users
+            
+            rsGui = stmt.executeQuery("SELECT * FROM GUI_users WHERE gui_username = '" + user + "' AND gui_pass = '" + password + "'"); //initializeren van resultset voor RFID_users
+            while ( rsGui.next() ) { //als er een volgend resultaat is doe het onderstaande met dit resultaat
+                login = true;
+            }
+            
+        } catch (Exception e) { //vang foutmeldingen
+            
+        }
+    }
+    
+    // zorgt ervoor dat je een update op bestanden kunt uitvoeren
+    public void update(int rfid_id, String rfid_username, String rfid_code) {
+        try {
+            Statement stmt = dbconnect.conn.createStatement(); // maakt een statement aan zodat ik later vanuit daar een quiarie kan uitvoeren
+            stmt.executeUpdate("UPDATE RFID_users SET rfid_username='" + rfid_username + "', rfid_code='" + rfid_code + "' WHERE rfid_id='" + rfid_id + "'");
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    // zorgt ervoor dat je iets aan de database kunt toevoegen, en returnt vervolgens de user_id
+    public void add(String rfid_username, String rfid_code) {
+        try {
+            Statement stmt = dbconnect.conn.createStatement(); // maakt een statement aan zodat ik later vanuit daar een quiarie kan uitvoeren
+            stmt.executeUpdate("INSERT INTO `RFID_users` (rfid_username, rfid_code) VALUES ( '" + rfid_username + "','" + rfid_code + "')");
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //loged_inout 1 voor in, 0 voor out
+    public void log(int rfid_id, int loged_inout) {
+        try {
+            Statement stmt = dbconnect.conn.createStatement(); // maakt een statement aan zodat ik later vanuit daar een quiarie kan uitvoeren
+            stmt.executeUpdate("INSERT INTO `LOGGED_users` (loged_rfid_id, loged_inout) VALUES ( '" + rfid_id + "','" + loged_inout + "')");
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+}

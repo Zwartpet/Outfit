@@ -1,0 +1,24 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package rfidgui;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author Administrator
+ */
+public class ConnectDB {
+    public Connection conn; //connectie buiten de constructur want nodig in andere classes
+    ConnectDB(){
+        try {
+            String url = "jdbc:mysql://178.21.17.166:3306/zwartpet_outfit"; //url naar de database/database naam
+            conn = DriverManager.getConnection(url,"zwartpet_john","je00459037"); // maak connectie naar de url met username, password
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex); //foutmeldingen logger
+        }
+    }
+}

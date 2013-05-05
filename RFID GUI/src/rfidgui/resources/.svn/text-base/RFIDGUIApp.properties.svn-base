@@ -1,0 +1,11 @@
+# Application global resources
+
+Application.name = RFID GUI
+Application.title = ITOPIA RFID Manager 
+Application.version = 1.0
+Application.vendor = ITOPIA systems Inc.
+Application.homepage=http://www.hva.nl
+Application.description = A simple Java desktop application based on Swing Application Framework.
+Application.vendorId = Sun
+Application.id = ${Application.name}
+Application.lookAndFeel = system

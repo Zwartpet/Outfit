@@ -1,0 +1,10 @@
+jLabel1.text=User name: 
+jLabel2.text=Password:
+jButton1.text=Log in
+jButton2.text=Cancel
+jLabel3.text=Log in hier with your user name and password 
+jLabel4.text=jLabel4
+jPasswordField1.text=jPasswordField1
+jLabel6.text=Copyright \u00a9 2011 ITOPIA INC. All rights reserved. IT103 Team 7.
+GuiPassword.text=jPasswordField2
+GuiUsername.text=Tony

@@ -1,0 +1,31 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package rfidgui;
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+/**
+ *
+ * @author TW
+ */
+public class md5 {
+public static String md5( String in ) {
+String hashword = null;
+try {
+MessageDigest md5 =
+MessageDigest.getInstance( "MD5" );
+md5.update( in.getBytes() );
+BigInteger hash = new BigInteger( 1, md5.digest() );
+hashword = hash.toString( 16 );
+} catch( NoSuchAlgorithmException e ) {}
+return hashword;
+}
+public static void main( String[] args ) { 
+    System.out.println( md5( "SECRET" ) );  
+    
+}
+}

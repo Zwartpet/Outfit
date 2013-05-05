@@ -1,0 +1,16 @@
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+
+#NOI18N
+jLabel4.background=255, 255, 255
+jLabel4.text=jLabel4
+#NOI18N
+Form.background=204, 204, 204
+jLabel2.text=Edit first, last name and card.
+jTextField1.text=First name 
+jLabel3.text=Copyright \u00a9 2011 ITOPIA INC. All rights reserved. IT103 Team 7.
+jButton2.text=Cancel
+jButton1.text=Toevoegen
+jLabel1.text=RFID nr.
+jCheckBox1.text=Door acceses
+jTextField2.text=Last name

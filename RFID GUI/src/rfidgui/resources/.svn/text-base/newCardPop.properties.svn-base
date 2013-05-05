@@ -1,0 +1,13 @@
+jTextField1.text=First name 
+jTextField2.text=Last name
+jButton1.text=Toevoegen
+jLabel1.text=RFID nr.
+jLabel2.text=Enter first, last name and scan your card
+#NOI18N
+Form.background=204, 204, 204
+jLabel3.text=Copyright \u00a9 2011 ITOPIA INC. All rights reserved. IT103 Team 7.
+jLabel4.text=jLabel4
+#NOI18N
+jLabel4.background=255, 255, 255
+jButton2.text=Cancel
+jCheckBox1.text=jCheckBox1

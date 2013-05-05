@@ -1,0 +1,22 @@
+
+Mogelijke vragen over het RFID Locker project:
+
+1. Hoe start je het programma en welke methoden worden vervolgens uitgevoerd?
+2. Uit hoeveel klassen en objecten bestaat het programma als het draait?
+3. Hoe ziet het klassendiagram eruit?
+4. Wat zijn de associaties en de associatierichtingen (wie kan bij wie)?
+5. Test de applicatie. Welke fouten kun je allemaal vinden?
+6. Hoe kun je een scherm toevoegen?
+7. Waarom zij de documentatiebestanden van de libraries nodig in netbeans?
+8. Welke uitbreidingen heb jij geprogrammeerd?
+9. Wat zijn breakpoints, watches, local variables en hoe krijg je die in NB te zien?
+10. Hoe werkt JavaDoc?
+11. Wat zijn de mogelijke @tags bij JavaDoc?
+12. Hoe zit de geheugenorganisatie van een Mifare 1K rfid smartcard eruit?
+13. Wat is het type van de HvA chippas? Tag type description staat in de ACR docs.
+    Kun je hier nog iets meer over vinden?
+14. Wat voor microcontroller zit er in het IVIBOT device?
+14a. Wat zijn de mogelijkheden en eigenschappen van deze microcontroller.
+15. Hoe worden API-documenten gemaakt?
+
+

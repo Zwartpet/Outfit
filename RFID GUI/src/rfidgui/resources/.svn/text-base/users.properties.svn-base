@@ -1,0 +1,14 @@
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+
+#NOI18N
+Form.background=204, 204, 204
+jTextArea1.text=User1\nUser2\nUser3\nUser4\n
+jButton1.text=Add
+jButton2.text=Remove
+jButton3.text=Edit
+#NOI18N
+jLabel4.background=255, 255, 255
+jLabel4.text=jLabel4
+jLabel3.text=Copyright \u00a9 2011 ITOPIA INC. All rights reserved. IT103 Team 7.
+jLabel2.text=In this menu you can add, edit and delete cards information.  

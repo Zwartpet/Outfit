@@ -1,0 +1,49 @@
+10
+
+dir
+28
+http://oege.ie.hva.nl/svn/out2011_tc7/RFID%20GUI/src
+http://oege.ie.hva.nl/svn/out2011_tc7
+delete
+
+
+2011-11-30T11:25:35.836523Z
+28
+vissercy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c412e001-8cd4-43ad-ae74-d2ff2dca0e04
+
+META-INF
+dir
+
+
+
+delete
+
+rfidgui
+dir
+
+
+
+delete
+
+resources
+dir
+
+
+
+delete
+
